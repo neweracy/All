@@ -1,9 +1,9 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import HomeScreen from '../components/screens/HomeScreen';
 import ProductDetailsScreen from '../components/screens/ProductDetailsScreen';
-import { createStackNavigator } from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import SignInScreen from '../components/screens/SignInScreen';
 // import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -21,11 +21,11 @@ const Stack = createStackNavigator();
  * Represents the home component.
  * It contains the home screen and product details screen.
  */
-function Home() {
+function HomeStack() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name='Home' component={HomeScreen} />
-      <Tab.Screen name='ProductDetails' component={ProductDetailsScreen} />
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="ProductDetails" component={ProductDetailsScreen} />
     </Tab.Navigator>
   );
 }
@@ -37,8 +37,13 @@ function Home() {
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator  initialRouteName='Sign In'>
-        <Stack.Screen name='Sign In' component={SignInScreen} />
+      <Stack.Navigator initialRouteName="Sign In">
+        <Stack.Screen name="Sign In" component={SignInScreen} />
+        <Stack.Screen
+          name="HomeS"
+          component={HomeStack}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

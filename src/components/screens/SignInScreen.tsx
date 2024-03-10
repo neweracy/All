@@ -1,7 +1,22 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Animated } from 'react-native';
+import {
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    StyleSheet,
+    Image,
+    Animated,
+} from 'react-native';
+// import {useNavigation} from '@react-navigation/native';
 
-const SignInScreen = () => {
+// const navigation = useNavigation();
+
+type Props = {
+    navigation: any;
+};
+
+const SignInScreen = ({navigation}: Props) => {
     const fadeAnim = React.useRef(new Animated.Value(0)).current;
 
     React.useEffect(() => {
@@ -14,18 +29,37 @@ const SignInScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Animated.View style={[styles.logoContainer, { opacity: fadeAnim }]}>
-                <Image source={require('../../../pictures/refer.png')} style={styles.logo} />
+            {/* Logo */}
+            <Animated.View style={[styles.logoContainer, {opacity: fadeAnim}]}>
+                <Image
+                    source={require('../../../pictures/refer.png')}
+                    style={styles.logo}
+                />
                 <Text style={styles.logoText}>My App</Text>
             </Animated.View>
+
+            {/* Form */}
             <View style={styles.formContainer}>
                 <TextInput style={styles.input} placeholder="Email" />
-                <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} />
-                <TouchableOpacity style={styles.button}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Password"
+                    secureTextEntry={true}
+                />
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                        navigation.navigate('HomeS');
+                    }}>
                     <Text style={styles.buttonText}>Sign In</Text>
                 </TouchableOpacity>
             </View>
-            <Image source={require('../../../pictures/signIn.png')} style={styles.illustration} />
+
+            {/* Illustration */}
+            <Image
+                source={require('../../../pictures/signIn.png')}
+                style={styles.illustration}
+            />
         </View>
     );
 };
@@ -35,6 +69,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'white',
     },
     logoContainer: {
         alignItems: 'center',
@@ -61,7 +96,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
     button: {
-        backgroundColor: 'blue',
+        backgroundColor: 'orange',
         paddingVertical: 10,
         alignItems: 'center',
     },
