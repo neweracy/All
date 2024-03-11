@@ -1,3 +1,4 @@
+
 // import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
@@ -69,6 +70,7 @@ function HomeStack() {
   );
 }
 
+
 /**
  * Represents the main app navigator.
  * It contains the navigation container and stack navigator.
@@ -76,6 +78,7 @@ function HomeStack() {
 const AppNavigator = () => {
   return (
     <NavigationContainer>
+
       <Stack.Navigator initialRouteName="Sign In">
         <Stack.Screen name="Sign In" component={SignInScreen} />
         <Stack.Screen
@@ -83,6 +86,7 @@ const AppNavigator = () => {
           component={HomeStack}
           options={{headerShown: false}}
         />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
